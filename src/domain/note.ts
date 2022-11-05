@@ -76,4 +76,4 @@ export function generateNotes({fromNote = LOWER_NOTE, toNote = HIGHER_NOTE}: Not
     .map((_, index: number) => fromMidi(fromNote + index))
 }
 
-export const notes = generateNotes
+export const notes = generateNotes()
