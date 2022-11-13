@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react';
 import Soundfont, { InstrumentName, Player } from 'soundfont-player';
-import { AudiNodesRegistry } from '../../domain/sound';
+import { AudioNodesRegistry } from '../../domain/sound';
 import { MidiValue } from './../../domain/note';
 import { DEFAULT_INSTRUMENT } from './../../domain/sound';
 import { Optional } from './../../domain/types';
@@ -19,11 +19,13 @@ interface Adapted {
 }
 
 export function useSoundfont({AudioContext}: Settings): Adapted {
-  let activeNodes: AudiNodesRegistry = {}
-  const [current, setCurrent] = useState<Optional<InstrumentName>>(null)
+  let activeNodes: AudioNodesRegistry = {}
+  const [current, setCurrent] = useState<Optional<InstrumentName>>(
+    null
+  )
   const [loading, setLoading] = useState<boolean>(false)
   const [player, setPlayer] = useState<Optional<Player>>(null)
-
+  
   const audio = useRef(new AudioContext())
 
   async function load(instrument: InstrumentName = DEFAULT_INSTRUMENT) {
